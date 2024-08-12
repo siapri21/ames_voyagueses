@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{# templates/flight/search_results.html.twig #}
+
+{% block title %}Hello FlightController!{% endblock %}
+
+{% block body %}
+<h1>page vol</h1>
+
+    <h1>Résultats de Recherche</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Ville de départ</th>
+                <th>Ville d'arrivée</th>
+                <th>Date de départ</th>
+                <th>Date d'arrivée</th>
+                <th>Prix</th>
+                <th>Réserver</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.departureCity }}</td>
+                    <td>{{ flight.arrivalCity }}</td>
+                    <td>{{ flight.departureDate|date('Y-m-d H:i') }}</td>
+                    <td>{{ flight.arrivalDate|date('Y-m-d H:i') }}</td>
+                    <td>{{ flight.price }}</td>
+                    <td>
+                        <a href="{{ path('flight_book', {'id': flight.id}) }}">Réserver</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

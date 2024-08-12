@@ -1,0 +1,10 @@
+{# {% extends 'templates/front/flight/search.html.twig'%} #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recherche de Vols</h1>
+    {{ form_start(flightForm) }}
+        {{ form_widget(flightForm) }}
+        <button type="submit">Rechercher</button>
+    {{ form_end(flightForm) }}
+{% endblock %}
