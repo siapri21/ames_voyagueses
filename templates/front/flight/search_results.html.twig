@@ -1,5 +1,5 @@
-{% extends 'base.html.twig' %}
-{# templates/flight/search_results.html.twig #}
+{# {% extends 'base.html.twig' %}
+templates/flight/search_results.html.twig
 
 {% block title %}Hello FlightController!{% endblock %}
 
@@ -27,12 +27,12 @@
                     <td>{{ flight.arrivalDate|date('Y-m-d H:i') }}</td>
                     <td>{{ flight.price }}</td>
                     <td>
-                        <a href="{{ path('flight_book', {'id': flight.id}) }}">Réserver</a>
-                    </td>
+                        {# <a href="{{ path('fl, {'id': flight.id}) }}">Réserver</a> #}
+                    {# </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
 
-
+ #} #}

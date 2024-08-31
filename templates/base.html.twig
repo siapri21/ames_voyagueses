@@ -7,10 +7,11 @@
          <script src="https://cdn.tailwindcss.com"></script>
          <script type="text/javascript" src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
         <script src="https://kit.fontawesome.com/ae331aba90.js" crossorigin="anonymous"></script>
+
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-            
-          <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+         {{ encore_entry_link_tags('app') }}
+          <link rel="stylesheet" href={{ asset('css/style.css') }} type="text/css" />
           {# <link rel="stylesheet" href="{{ asset('css/index.css') }}" type="text/css" /> #}
         {% endblock %}
 
@@ -18,9 +19,14 @@
             {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+
     </head>
+
     <body>
     {% include "partials/_header.html.twig" %} 
-        {% block body %}{% endblock %}
+
+        {% block body %}
+        
+        {% endblock %}
     </body>
 </html>

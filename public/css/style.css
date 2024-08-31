@@ -25,7 +25,7 @@
     background-color: var(--beige);
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 100rem;
+    width: 100%;
   }
 
   .fa-solid{
@@ -35,18 +35,18 @@
 
   .navbar{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px;
     margin: 20px auto;
-    width: 100rem;
-    background-color:var(--vertOlive);
+    width: 100%;
+    background-color:red;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
   .navbar>a{
     text-decoration: none;
-    color: #ffff;
+    color:black;
   }
 
   #logo{
@@ -57,11 +57,8 @@
     display: none;
   }
 
-  @media (max-width: 870px)
+  @media (max-width: 700px)
   {
-   
-    
-
   .navbar{
     display: block;
     flex-direction: row;
