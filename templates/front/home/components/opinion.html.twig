@@ -1,0 +1,56 @@
+{# templates/front/home/components/testimonials.html.twig #}
+
+<div class="py-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-3xl font-bold text-center mb-8">Témoignages ("Testé et apprécié !")</h3>
+        
+        <div class="overflow-hidden">
+            <div class="flex animate-scroll" style="animation: scroll 30s linear infinite;">
+                {% set testimonials = [
+                    { name: 'John Doe', image: 'img/alex-suprun-ZHvM3XIOHoE-unsplash.jpg', text: "J'ai réservé un voyage avec cette agence et j'ai été impressionné par le service client et la qualité des prestations. Je recommande vivement!" },
+                    { name: 'Jane Smith', image: 'img/jake-nackos-IF9TK5Uy-KI-unsplash.jpg', text: "Une expérience de réservation en ligne simple et intuitive. Les offres étaient nombreuses et les prix compétitifs. Je suis très satisfaite!" },
+                    { name: 'Michael Johnson', image: 'img/mason-wilkes-TMgQMXoglsM-unsplash.jpg', text: "Grâce à cette agence, j'ai pu réaliser mon rêve de vacances en famille. Les services étaient excellents et l'équipe très professionnelle." },
+                    { name: 'Alice Brown', image: 'img/jake-nackos-IF9TK5Uy-KI-unsplash.jpg', text: "Je recommande vivement cette agence de voyage en ligne. Les tarifs sont compétitifs et le processus de réservation est très simple et rapide." },
+                    { name: 'David Wilson', image: 'img/christian-buehner-DItYlc26zVI-unsplash.jpg', text: "Mon expérience avec cette agence a été excellente du début à la fin. Je n'hésiterai pas à réserver à nouveau mes vacances avec eux." },
+                    { name: 'Sarah Lee', image: 'img/christina-wocintechchat-com-_5_CBVCLBsY-unsplash.jpg', text: "Je suis très satisfaite des services fournis par cette agence. J'ai passé des vacances inoubliables et je les recommande à tous mes amis." }
+                ] %}
+
+                {% for testimonial in testimonials %}
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center mb-4">
+                                <img src="{{ asset(testimonial.image) }}" alt="{{ testimonial.name }}" class="w-16 h-16 rounded-full mr-4">
+                                <h4 class="text-xl font-semibold">{{ testimonial.name }}</h4>
+                            </div>
+                            <p class="text-gray-600">{{ testimonial.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {# Répéter les témoignages pour une transition fluide #}
+                {% for testimonial in testimonials %}
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center mb-4">
+                                <img src="{{ asset(testimonial.image) }}" alt="{{ testimonial.name }}" class="w-16 h-16 rounded-full mr-4">
+                                <h4 class="text-xl font-semibold">{{ testimonial.name }}</h4>
+                            </div>
+                            <p class="text-gray-600">{{ testimonial.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

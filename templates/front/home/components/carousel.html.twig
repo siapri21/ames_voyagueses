@@ -1,0 +1,21 @@
+<div class='carousel-container w-full relative mb-0'>  {# Suppression de la marge inférieure #}
+    <div class="slick-carousel">
+        {% for slide in carouselData %}
+            <div class="relative">
+                <img 
+                    class="w-full h-full object-cover" 
+                    src="{{ asset(slide.image) }}" 
+                    alt="{{ slide.alt }}"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <h2 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold p-4 md:p-6 rounded text-center max-w-2xl md:max-w-3xl lg:max-w-4xl mx-4">
+                        {{ slide.text }}
+                        {% if slide.author is defined %}
+                            <br><span class="text-xl md:text-2xl mt-2">{{ slide.author }}</span>
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

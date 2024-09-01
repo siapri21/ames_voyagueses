@@ -1,0 +1,26 @@
+<div class="bg-blue-600 p-4 shadow-md -mt-8">  {# Utilisez une marge négative pour rapprocher la barre du carrousel #}
+    <form action="{{ path('front_flight_search') }}" method="GET" class="flex flex-wrap items-center justify-center gap-4">
+        <div class="flex-grow min-w-[200px]">
+            <input type="text" name="departure" placeholder="Ville de départ" class="w-full p-2 rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+        </div>
+        <div class="flex-grow min-w-[200px]">
+            <input type="text" name="arrival" placeholder="Ville d'arrivée" class="w-full p-2 rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+        </div>
+        <div class="flex-grow min-w-[200px]">
+            <input type="date" name="departureDate" class="w-full p-2 rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+        </div>
+        <div class="flex-grow min-w-[200px]">
+            <select name="passengers" class="w-full p-2 rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                <option value="1">1 passager</option>
+                <option value="2">2 passagers</option>
+                <option value="3">3 passagers</option>
+                <option value="4">4 passagers</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-4 rounded-md transition duration-300">
+                Rechercher
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+{# templates/front/home/components/catalogues.html.twig #}
+
+<div class="container mx-auto px-4 py-8">
+    <h3 class="text-3xl font-bold text-center mb-8">Nos catalogues de voyages</h3>
+    
+    <div class="flex flex-wrap justify-around items-center">
+        {% set catalogues = [
+            { image: 'img/montagnade 1.png', title: 'Montagne' },
+            { image: 'img/romance 1.png', title: 'Escapade en amoureux' },
+            { image: 'img/villes 1.png', title: 'Villes' },
+            { image: 'img/deserh 1.png', title: 'Safari' },
+            { image: 'img/plages 1.png', title: 'Plage' }
+        ] %}
+
+        {% for catalogue in catalogues %}
+            <div class="w-40 m-4 transform rotate-45 transition duration-1000 hover:-translate-y-4 shadow-md rounded-lg overflow-hidden">
+                <figure class="relative">
+                    <img src="{{ asset(catalogue.image) }}" alt="{{ catalogue.title }}" class="w-full h-40 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <h3 class="text-white text-lg font-semibold text-center">{{ catalogue.title }}</h3>
+                    </div>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+    </div>
+</div>

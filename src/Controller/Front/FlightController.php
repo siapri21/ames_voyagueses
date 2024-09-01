@@ -2,12 +2,11 @@
 
 namespace App\Controller\Front;
 
-use App\Form\FlightType;
 use App\Service\ServiceApi;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/front/flight', name: 'front_flight_')]
 class FlightController extends AbstractController
@@ -15,62 +14,48 @@ class FlightController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(ServiceApi $serviceApi): Response
     {
+        // Récupération des destinations depuis l'API
         $destination = $serviceApi->getFlights();
-        return $this->render('front/flight/index.html.twig',   ['flight' => $destination]);
-    }
 
+        // Rendu du template avec les destinations
+        return $this->render('front/flight/index.html.twig', [
+            'flight' => $destination,  // Passe la variable 'flight' au template
+        ]);
+    }
 
     #[Route('/search', name: 'search')]
-public function search(Request $request): Response
-{
-    $form = $this->createForm(FlightType::class);
-    $form->handleRequest($request);
-    
-    // Gérer la recherche simple depuis la barre de recherche
-    $query = $request->query->get('query');
-    if ($query) {
-        // Simulez la récupération des résultats de recherche basée sur la requête simple
-        $flights = [
-            (object)[
-                'id' => 1,
-                'departureCity' => 'Paris',
-                'arrivalCity' => $query, // Utilise la requête comme ville d'arrivée pour l'exemple
-                'departureDate' => new \DateTime('2024-08-10 08:00'),
-                'arrivalDate' => new \DateTime('2024-08-10 16:00'),
-                'price' => 500,
-            ],
-            // Ajoutez d'autres vols fictifs si nécessaire
-        ];
+    public function search(Request $request): Response
+    {
+        // Récupération de la requête utilisateur
+        $query = $request->query->get('query');
+        
+        $flights = [];
 
-        return $this->render('front/flight/index.html.twig', [
-            'flights' => $flights,
+        if ($query) {
+            // Simuler des résultats de recherche basés sur la requête
+            $flights = [
+                (object)[
+                    'id' => 1,
+                    'departureCity' => 'Paris',
+                    'arrivalCity' => $query,  // Utilisation de la requête comme ville d'arrivée
+                    'departureDate' => new \DateTime('2024-08-10 08:00'),
+                    'arrivalDate' => new \DateTime('2024-08-10 16:00'),
+                    'price' => 500,
+                    'airline' => 'Air France',
+                ],
+                // Ajoutez d'autres vols fictifs ici si nécessaire
+            ];
+        } else {
+            // Si aucune requête n'est spécifiée, renvoyez simplement une liste vide
+            $flights = [];
+        }
+
+        // Rendu du template avec les résultats de recherche
+        return $this->render('front/flight/search_results.html.twig', [
+            'flights' => $flights,  // Passe la variable 'flights' au template
             'query' => $query,
         ]);
+
+        dump($flights);
     }
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        // Votre logique existante pour le traitement du formulaire complet
-        $flights = [
-            (object)[
-                'id' => 1,
-                'departureCity' => 'Paris',
-                'arrivalCity' => 'New York',
-                'departureDate' => new \DateTime('2024-08-10 08:00'),
-                'arrivalDate' => new \DateTime('2024-08-10 16:00'),
-                'price' => 500,
-            ],
-            // Ajoutez d'autres vols fictifs si nécessaire
-        ];
-
-        return $this->render('front/flight/search_results.html.twig', [
-            'flights' => $flights,
-        ]);
-    }
-
-    return $this->render('front/flight/search.html.twig', ['flightForm' => $form->createView()]);
 }
-
-    
-}
-
-

@@ -1,10 +1,47 @@
-{# {% extends 'templates/front/flight/search.html.twig'%} #}
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Recherche de Vols</h1>
-    {{ form_start(flightForm) }}
-        {{ form_widget(flightForm) }}
-        <button type="submit">Rechercher</button>
-    {{ form_end(flightForm) }}
+<div class="container mx-auto py-6">
+    <div class="flex flex-col lg:flex-row">
+        <!-- Barre latérale pour les filtres -->
+        <aside class="w-full lg:w-1/4 bg-white p-4 rounded-lg shadow-md mb-6 lg:mb-0">
+            <h3 class="text-xl font-semibold mb-4">Filtres</h3>
+            <!-- Exemple de filtre (vous pouvez ajouter plus de filtres selon vos besoins) -->
+            <div class="mb-4">
+                <label class="block mb-2 font-medium text-gray-700">Escale</label>
+                <div class="flex items-center mb-2">
+                    <input type="checkbox" id="direct" class="mr-2">
+                    <label for="direct" class="text-sm">Direct</label>
+                </div>
+                <div class="flex items-center mb-2">
+                    <input type="checkbox" id="oneStop" class="mr-2">
+                    <label for="oneStop" class="text-sm">1 escale</label>
+                </div>
+            </div>
+            <!-- Ajouter d'autres filtres ici -->
+        </aside>
+
+        <!-- Section des résultats -->
+        <div class="w-full lg:w-3/4">
+            <h3 class="text-xl font-semibold mb-6">Résultats de la recherche</h3>
+
+            {% if flights is empty %}
+                <p class="text-gray-600">Aucun vol trouvé pour cette recherche.</p>
+            {% else %}
+                {% for flight in flights %}
+                <div class="bg-white p-4 rounded-lg shadow-md mb-6 flex items-center justify-between">
+                    <div>
+                        <p class="text-lg font-bold">{{ flight.departureCity }} &rarr; {{ flight.arrivalCity }}</p>
+                        <p class="text-sm text-gray-600">Départ : {{ flight.departureDate|date('d/m/Y H:i') }} - Arrivée : {{ flight.arrivalDate|date('d/m/Y H:i') }}</p>
+                        <p class="text-sm text-gray-600">Prix : {{ flight.price }} €</p>
+                    </div>
+                    <div class="text-right">
+                        <a href="#" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg">Voir</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
