@@ -56,6 +56,6 @@ class FlightController extends AbstractController
             'query' => $query,
         ]);
 
-        dump($flights);
+        
     }
 }

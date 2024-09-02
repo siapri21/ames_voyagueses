@@ -3,8 +3,10 @@
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
         "@symfony/webpack-encore": "^4.6.1",
+        "@testing-library/dom": "^10.4.0",
         "autoprefixer": "^10.4.20",
         "core-js": "^3.23.0",
+        "jsdom": "^25.0.0",
         "postcss": "^8.4.41",
         "postcss-loader": "^7.3.4",
         "regenerator-runtime": "^0.13.9",
@@ -19,9 +21,11 @@
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
-        "build": "encore production --progress"
+        "build": "encore production --progress",
+        "test": "vitest"
     },
     "dependencies": {
-        "tw-elements": "^2.0.0"
+        "tw-elements": "^2.0.0",
+        "vitest": "^2.0.5"
     }
 }
